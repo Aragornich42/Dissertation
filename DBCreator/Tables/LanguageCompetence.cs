@@ -2,13 +2,13 @@
 
 namespace DBCreator.Tables
 {
-    [Migration(20220104135500)]
+    [Migration(20220104135505)]
     public class LanguageCompetence : Migration
     {
         public override void Up()
         {
             Create.Table("LanguageCompetence").InSchema("public")
-                .WithColumn("Id").AsInt32().PrimaryKey().NotNullable().Unique().Indexed().WithColumnDescription("ID уровня знания языка")
+                .WithColumn("Id").AsInt32().PrimaryKey().NotNullable().Unique().Identity().Indexed().WithColumnDescription("ID уровня знания языка")
                 .WithColumn("Name").AsFixedLengthString(32).NotNullable().WithColumnDescription("Уровень знания языка");
         }
 

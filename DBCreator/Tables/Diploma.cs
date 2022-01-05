@@ -2,13 +2,13 @@
 
 namespace DBCreator.Tables
 {
-    [Migration(20220104135500)]
+    [Migration(20220104135502)]
     public class Diploma : Migration
     {
         public override void Up()
         {
             Create.Table("Diploma").InSchema("public")
-                .WithColumn("Id").AsInt64().PrimaryKey().NotNullable().Unique().Indexed().WithColumnDescription("ID диплома")
+                .WithColumn("Id").AsInt64().PrimaryKey().NotNullable().Unique().Identity().Indexed().WithColumnDescription("ID диплома")
                 .WithColumn("Seria").AsFixedLengthString(32).NotNullable().WithColumnDescription("Серия диплома")
                 .WithColumn("Number").AsFixedLengthString(32).Nullable().WithColumnDescription("Номер диплома")
                 .WithColumn("EducatInstitName").AsFixedLengthString(128).NotNullable().WithColumnDescription("Название учебного заведения")

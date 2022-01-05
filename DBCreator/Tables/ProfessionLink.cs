@@ -2,15 +2,15 @@
 
 namespace DBCreator.Tables
 {
-    [Migration(20220104135500)]
+    [Migration(20220104135509)]
     public class ProfessionLink : Migration
     {
         public override void Up()
         {
             Create.Table("ProfessionLink").InSchema("public")
-                .WithColumn("Id").AsInt64().PrimaryKey().NotNullable().Unique().Indexed().WithColumnDescription("ID связки сотрудник-профессия")
-                .WithColumn("EmployeeId").AsInt64().ForeignKey("Employee", "Id").NotNullable().WithColumnDescription("Табельный номер")
-                .WithColumn("ProfessionId").AsInt32().ForeignKey("Profession", "Id").NotNullable().WithColumnDescription("ID профессии")
+                .WithColumn("Id").AsInt64().PrimaryKey().NotNullable().Unique().Identity().Indexed().WithColumnDescription("ID связки сотрудник-профессия")
+                .WithColumn("EmployeeId").AsInt64().NotNullable().WithColumnDescription("Табельный номер")      //foreign
+                .WithColumn("ProfessionId").AsInt32().NotNullable().WithColumnDescription("ID профессии")      //foreign
                 .WithColumn("IsMain").AsBoolean().NotNullable().WithColumnDescription("Основная?");
         }
 

@@ -27,18 +27,7 @@ namespace DBCreator
                 .ConfigureRunner(rb => rb
                     .AddPostgres()
                     .WithGlobalConnectionString("postgresql://postgres@localhost:5432/postgres")
-                    .ScanIn(typeof(Employee).Assembly, 
-                            typeof(Country).Assembly, 
-                            typeof(Language).Assembly, 
-                            typeof(LanguageCompetence).Assembly, 
-                            typeof(Profession).Assembly,
-                            typeof(Diploma).Assembly,
-                            typeof(Education).Assembly,
-                            typeof(ForeignPassport).Assembly,
-                            typeof(LanguageKnowledge).Assembly,
-                            typeof(ProfessionLink).Assembly,
-                            typeof(Relative).Assembly)
-                    .For.Migrations())
+                    .ScanIn(typeof(Employee).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);
         }
