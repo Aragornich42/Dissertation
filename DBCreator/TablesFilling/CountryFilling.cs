@@ -12,6 +12,7 @@ namespace DBCreator.TablesFilling
             foreach (var country in _countries)
                 sb.Append(GetRow(country));
             sb.Replace(',', ';', sb.Length - 1, 1);
+            Helper.CountriesCount = _countries.Length;
             return sb.ToString();
         }
 

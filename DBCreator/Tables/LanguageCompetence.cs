@@ -2,7 +2,7 @@
 
 namespace DBCreator.Tables
 {
-    [Migration(20220104135505)]
+    [Migration(20220104135504)]
     public class LanguageCompetence : Migration
     {
         public override void Up()

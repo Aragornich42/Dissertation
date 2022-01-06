@@ -26,7 +26,7 @@ namespace DBCreator.TablesFilling
 
     internal class EmployeeFilling : TableFilling
     {
-        private Random _rand = new Random();
+        private Random _rand = Helper.Rand;
         private int _profLen = Helper.Professions.Length;
         private int _nationLen = _nationalities.Length;
         private int _marrLen = _marriage.Length;

@@ -2,7 +2,7 @@
 
 namespace DBCreator.Tables
 {
-    [Migration(20220104135510)]
+    [Migration(20220104135509)]
     public class Relative : Migration
     {
         public override void Up()

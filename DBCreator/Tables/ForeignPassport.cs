@@ -2,7 +2,7 @@
 
 namespace DBCreator.Tables
 {
-    [Migration(20220104135507)]
+    [Migration(20220104135506)]
     public class ForeignPassport : Migration
     {
         public override void Up()

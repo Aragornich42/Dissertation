@@ -11,6 +11,28 @@ namespace DBCreator.TablesFilling
     {
         private static Random _rand = new Random();
 
+        internal static Random Rand
+        {
+            get { return _rand; }
+        }
+
+        #region КРАЙНЕ ВНИМАТЕЛЬНО ИСПОЛЬЗУЙТЕ ЭТИ СВОЙСТВА! ОНИ ОБЯЗАТЕЛЬНО ДОЛЖНЫ БЫТЬ ЗАПОЛНЕНЫ ПЕРЕД GET-ЗАПРОСОМ!!!
+
+        private static int _countriesCount = 0;
+
+        internal static int CountriesCount
+        {
+            get
+            {
+                if (_countriesCount == 0)
+                    throw new Exception("Для начала заполните это свойство из кода после создания таблицы Countries!!!");
+                return _countriesCount;
+            }
+            set { _countriesCount = value; }
+        }
+
+        #endregion
+
         /// <summary>
         /// Цифры
         /// </summary>
@@ -559,6 +581,6 @@ namespace DBCreator.TablesFilling
         internal static int RowsCount
         {
             get { return _rowsCount; }
-        }
+        }        
     }
 }
