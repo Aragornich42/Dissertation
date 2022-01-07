@@ -19,7 +19,7 @@ namespace DBCreator.TablesFilling
     internal class EducationFilling : TableFilling
     {
         private Random _rand = Helper.Rand;
-        private int _startId = 1;
+        private long _startId = 1;
         private int _schoolLen = _schools.Length;
         private int _collegeLen = _colleges.Length;
         private int _univerLen = _universities.Length;

@@ -18,7 +18,7 @@ namespace DBCreator.TablesFilling
     internal class ForeignPassportFilling : TableFilling
     {
         private Random _rand = Helper.Rand;
-        private int _startId = 1;
+        private long _startId = 1;
 
         public ForeignPassportFilling() : base("ForeignPassport", "({0},{1},'{2}',{3},{4}),") { }
 

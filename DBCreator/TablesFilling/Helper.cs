@@ -19,17 +19,41 @@ namespace DBCreator.TablesFilling
         #region КРАЙНЕ ВНИМАТЕЛЬНО ИСПОЛЬЗУЙТЕ ЭТИ СВОЙСТВА! ОНИ ОБЯЗАТЕЛЬНО ДОЛЖНЫ БЫТЬ ЗАПОЛНЕНЫ ПЕРЕД GET-ЗАПРОСОМ!!!
 
         private static int _countriesCount = 0;
+        private static int _languageCount = 0;
+        private static int _languageCompCount = 0;
 
         internal static int CountriesCount
         {
             get
             {
                 if (_countriesCount == 0)
-                    throw new Exception("Для начала заполните это свойство из кода после создания таблицы Countries!!!");
+                    throw new Exception("Для начала заполните это свойство из кода после создания таблицы Country!!!");
                 return _countriesCount;
             }
             set { _countriesCount = value; }
         }
+
+        internal static int LanguageCount
+        {
+            get
+            {
+                if (_languageCount == 0)
+                    throw new Exception("Для начала заполните это свойство из кода после создания таблицы Language!!!");
+                return _languageCount;
+            }
+            set { _languageCount = value; }
+        }
+
+        internal static int LanguageCompCount
+        {
+            get
+            {
+                if (_languageCompCount == 0)
+                    throw new Exception("Для начала заполните это свойство из кода после создания таблицы LanguageCompetence!!!");
+                return _languageCompCount;
+            }
+            set { _languageCompCount = value; }
+        }        
 
         #endregion
 
@@ -570,15 +594,20 @@ namespace DBCreator.TablesFilling
             get { return _professions; }
         }
 
-        private static int _party = int.Parse(ConfigurationManager.AppSettings["Party"]);
-        private static int _rowsCount = int.Parse(ConfigurationManager.AppSettings["RowsCount"]);
+        internal static int ProfessionsCount
+        {
+            get { return _professions.Length; }
+        }
 
-        internal static int Party
+        private static long _party = long.Parse(ConfigurationManager.AppSettings["Party"]);
+        private static long _rowsCount = long.Parse(ConfigurationManager.AppSettings["RowsCount"]);
+
+        internal static long Party
         {
             get { return _party; }
         }
 
-        internal static int RowsCount
+        internal static long RowsCount
         {
             get { return _rowsCount; }
         }        

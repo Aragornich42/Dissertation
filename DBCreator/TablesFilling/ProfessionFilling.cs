@@ -12,6 +12,7 @@ namespace DBCreator.TablesFilling
             foreach (var profession in Helper.Professions)
                 sb.Append(GetRow(profession));
             sb.Replace(',', ';', sb.Length - 1, 1);
+            Helper.ProfessionsCount
             return sb.ToString();
         }        
     }

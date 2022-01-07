@@ -12,6 +12,7 @@ namespace DBCreator.TablesFilling
             foreach (var competence in _competences)
                 sb.Append(GetRow(competence));
             sb.Replace(',', ';', sb.Length - 1, 1);
+            Helper.LanguageCompCount = _competences.Length;
             return sb.ToString();
         }
 

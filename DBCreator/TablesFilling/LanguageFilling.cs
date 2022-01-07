@@ -12,6 +12,7 @@ namespace DBCreator.TablesFilling
             foreach (var language in _languages)
                 sb.Append(GetRow(language));
             sb.Replace(',', ';', sb.Length - 1, 1);
+            Helper.LanguageCount = _languages.Length;
             return sb.ToString();
         }
 
