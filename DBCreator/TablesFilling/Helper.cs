@@ -60,26 +60,33 @@ namespace DBCreator.TablesFilling
         /// <summary>
         /// Цифры
         /// </summary>
-        internal static char GetDigit()
-        {
-            return (char)_rand.Next(48, 58);
-        }
+        internal static char GetDigit() => (char)_rand.Next(48, 58);
 
         /// <summary>
         /// Русские ЗАГЛАВНЫЕ
         /// </summary>
-        internal static char GetUpperLetter()
-        {
-            return (char)_rand.Next(1040, 1072);
-        }
+        internal static char GetUpperLetter() => (char)_rand.Next(1040, 1072);
 
         /// <summary>
         /// Русские строчные
         /// </summary>
-        internal static char GetLowerLetter()
+        internal static char GetLowerLetter() => (char)_rand.Next(1072, 1104);
+
+        /// <summary>
+        /// Отформатированная для Постгрес дата
+        /// </summary>
+        internal static string GetFormattedDate(DateTime date) => date.ToString("yyyy'-'MM'-'dd");
+
+        /// <summary>
+        /// Русский телефон
+        /// </summary>
+        internal static string GetPhone()
         {
-            return (char)_rand.Next(1072, 1104);
-        }        
+            var sb = new StringBuilder("+7");
+            for (int i = 0; i < 10; i++)
+                sb.Append(GetDigit());
+            return sb.ToString();
+        }
 
         // Данные неполные, ибо засунуть в файл 5500 профессий - преступление
         #region Профессии

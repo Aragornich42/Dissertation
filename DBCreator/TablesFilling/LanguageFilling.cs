@@ -4,7 +4,7 @@ namespace DBCreator.TablesFilling
 {
     internal class LanguageFilling : TableFilling
     {
-        public LanguageFilling() : base("Language", "('{0}'),") { }
+        public LanguageFilling() : base("Language", "(DEFAULT,'{0}'),") { }
 
         internal override string GetSql()
         {

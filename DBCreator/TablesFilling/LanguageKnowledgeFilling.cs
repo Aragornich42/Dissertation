@@ -18,7 +18,7 @@ namespace DBCreator.TablesFilling
         private Random _rand = Helper.Rand;
         private long _startId = 1;
 
-        public LanguageKnowledgeFilling() : base("LanguageKnowledge", "({0},{1},{2}),") { }
+        public LanguageKnowledgeFilling() : base("LanguageKnowledge", "(DEFAULT,{0},{1},{2}),") { }
 
         internal override string GetSql()
         {

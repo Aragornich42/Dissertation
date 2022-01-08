@@ -4,7 +4,7 @@ namespace DBCreator.TablesFilling
 {
     internal class CountryFilling : TableFilling
     {
-        public CountryFilling() : base("Country", "('{0}'),") { }
+        public CountryFilling() : base("Country", "(DEFAULT,'{0}'),") { }
 
         internal override string GetSql()
         {

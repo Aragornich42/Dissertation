@@ -31,8 +31,8 @@ namespace DBCreator.TablesFilling
         private int _nationLen = _nationalities.Length;
         private int _marrLen = _marriage.Length;
 
-        public EmployeeFilling() : base("Employee", 
-            "('{0}','{1}','{2}','{3}','{4}',{5},'{6}',{7},'{8}','{9}',{10},'{11}','{12}',{13}),") { }
+        public EmployeeFilling() : base("Employee",
+            "(DEFAULT,'{0}','{1}','{2}','{3}','{4}',{5},'{6}','{7}','{8}','{9}',{10},'{11}','{12}',{13}),") { }
 
         internal override string GetSql()
         {
@@ -52,12 +52,12 @@ namespace DBCreator.TablesFilling
                                  name.FirstName(sex),
                                  Patronymic(),
                                  Sex(sex),
-                                 person.DateOfBirth,
+                                 Helper.GetFormattedDate(person.DateOfBirth),
                                  Nationality(),
                                  address.FullAddress(),
                                  FactAddress(),
                                  InMarriage(),
-                                 Phone(),
+                                 Helper.GetPhone(),
                                  Additional()));
             }
             sb.Replace(',', ';', sb.Length - 1, 1);
@@ -162,14 +162,6 @@ namespace DBCreator.TablesFilling
         {
             var i = _rand.Next(0, _marrLen);
             return _marriage[i];
-        }
-
-        private string Phone()
-        {
-            var sb = new StringBuilder("+7");
-            for (int i = 0; i < 10; i++)
-                sb.Append(Helper.GetDigit());
-            return sb.ToString();
         }
 
         private string Additional()

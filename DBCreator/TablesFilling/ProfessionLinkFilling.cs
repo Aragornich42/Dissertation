@@ -17,7 +17,7 @@ namespace DBCreator.TablesFilling
         private Random _rand = Helper.Rand;
         private long _startId = 1;
 
-        public ProfessionLinkFilling() : base("ProfessionLink", "({0},{1},{2}),") { }
+        public ProfessionLinkFilling() : base("ProfessionLink", "(DEFAULT,{0},{1},{2}),") { }
 
         internal override string GetSql()
         {

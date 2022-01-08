@@ -20,7 +20,7 @@ namespace DBCreator.TablesFilling
         private Random _rand = Helper.Rand;
         private long _startId = 1;
 
-        public ForeignPassportFilling() : base("ForeignPassport", "({0},{1},'{2}',{3},{4}),") { }
+        public ForeignPassportFilling() : base("ForeignPassport", "(DEFAULT,{0},{1},'{2}','{3}','{4}'),") { }
 
         internal override string GetSql()
         {
@@ -40,8 +40,8 @@ namespace DBCreator.TablesFilling
                     sb.Append(GetRow(_startId + i,
                                      CountryId(),
                                      Number(),
-                                     startDate,
-                                     FinishDate(startDate)));
+                                     Helper.GetFormattedDate(startDate),
+                                     Helper.GetFormattedDate(FinishDate(startDate))));
                 }
             }
             sb.Replace(',', ';', sb.Length - 1, 1);

@@ -2,10 +2,11 @@
 {
     public abstract class TableFilling
     {
-        private string _insertInto = "INSERT INTO ";
+        // Пока что хардкод схемы
+        private string _insertInto = "INSERT INTO public.";
         private string _values = " VALUES ";
         private string _table = "";
-        private string _rowPattern = "('{0}', {1}),";
+        private string _rowPattern = "(DEFAULT,'{0}', {1}),";
 
         protected string InsertStart
         {

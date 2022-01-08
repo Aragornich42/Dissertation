@@ -28,7 +28,7 @@ namespace DBCreator.TablesFilling
         private int _qmLen = _qualificationMag.Length;
         private int _qsLen = _qualificationSpec.Length;
 
-        public EducationFilling() : base("Education", "({0},'{1}','{2}','{3}','{4}','{5}',{6},{7}),") { }
+        public EducationFilling() : base("Education", "(DEFAULT,{0},'{1}','{2}','{3}','{4}','{5}',{6},{7}),") { }
 
         internal override string GetSql()
         {
@@ -137,12 +137,9 @@ namespace DBCreator.TablesFilling
             }
         }
 
-        private DateTime YearOfGrad()
+        private int YearOfGrad()
         {
-            var year = _rand.Next(1950, 2022);
-            var month = _rand.Next(1, 13);
-            int day = _rand.Next(1, DateTime.DaysInMonth(year, month) + 1);
-            return new DateTime(year, month, day);
+            return _rand.Next(1950, 2022);
         }
 
         private string Qualification(Educ educ)
