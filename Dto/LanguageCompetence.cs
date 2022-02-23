@@ -1,9 +1,0 @@
-﻿namespace Dto
-{
-    public class LanguageCompetence
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-    }
-}

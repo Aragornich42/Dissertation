@@ -37,12 +37,12 @@ namespace Dto
 
         public Relative Relative { get; set; }
 
-        public List<ProfessionLink> Profession { get; set; }
+        public List<Profession> Professions { get; set; }
 
         public List<Education> Educations { get; set; }
 
         public List<ForeignPassport> ForeignPassports { get; set; }
 
-        public List<LanguageKnowledge> Languages { get; set; }
+        public List<Language> Languages { get; set; }
     }
 }

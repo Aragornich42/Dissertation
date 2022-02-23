@@ -2,8 +2,6 @@
 {
     public class Education
     {
-        public long Id { get; set; }
-
         public string EducationLevel { get; set; }
 
         public string DipSeria { get; set; }

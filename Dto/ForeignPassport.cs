@@ -4,9 +4,7 @@ namespace Dto
 {
     public class ForeignPassport
     {
-        public long Id { get; set; }
-
-        public Country Country { get; set; }
+        public string CountryName { get; set; }
 
         public string Number { get; set; }
 

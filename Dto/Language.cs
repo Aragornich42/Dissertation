@@ -2,8 +2,8 @@
 {
     public class Language
     {
-        public int Id { get; set; }
+        public string LanguageName { get; set; }
 
-        public string Name { get; set; }
+        public string LanguageCompetence { get; set; }
     }
 }
