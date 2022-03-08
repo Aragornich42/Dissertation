@@ -36,10 +36,10 @@ namespace Services
         }
 
         /// <inheritdoc/>
-        public void UpdateEmployeesAdditional(Dictionary<long, string> additional)
+        public void UpdateEmployeesAdditional(List<PatchDto> additional)
         {
-            foreach (var pair in additional)
-                _db.UpdateEmployeeAdditional(pair.Key, pair.Value);
+            foreach (var addit in additional)
+                _db.UpdateEmployeeAdditional(addit.Id, addit.Additional);
         }
 
         /// <inheritdoc/>

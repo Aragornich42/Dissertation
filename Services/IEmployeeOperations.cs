@@ -3,7 +3,7 @@ using Dto;
 
 namespace Services
 {
-    interface IEmployeeOperations
+    public interface IEmployeeOperations
     {
         /// <summary>
         /// Список ВСЕХ работников
@@ -18,7 +18,7 @@ namespace Services
         /// <summary>
         /// Обновить ТОЛЬКО доп. информацию о работниках по их Id
         /// </summary>
-        void UpdateEmployeesAdditional(Dictionary<long, string> additional);
+        void UpdateEmployeesAdditional(List<PatchDto> additional);
 
         /// <summary>
         /// Удалить работников по его ID
