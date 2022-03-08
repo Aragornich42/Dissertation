@@ -11,6 +11,7 @@ namespace Services
     {
         readonly DataConnector _db = new DataConnector();
 
+        /// <inheritdoc/>
         public List<Employee> GetEmployees()
         {
             var employees = _db.GetEmployees();
@@ -27,19 +28,25 @@ namespace Services
             return employees;
         }
 
+        /// <inheritdoc/>
         public void AddEmployees(List<Employee> employees)
         {
-            throw new NotImplementedException();
+            foreach (var employee in employees)
+                _db.AddEmployee(employee);
         }
 
-        public void UpdateEmployees(List<Employee> employees)
+        /// <inheritdoc/>
+        public void UpdateEmployeesAdditional(Dictionary<long, string> additional)
         {
-            throw new NotImplementedException();
+            foreach (var pair in additional)
+                _db.UpdateEmployeeAdditional(pair.Key, pair.Value);
         }
 
+        /// <inheritdoc/>
         public void DeleteEmployees(List<long> employeeIds)
         {
-            throw new NotImplementedException();
+            foreach (var employeeId in employeeIds)
+                _db.DeleteEmployee(employeeId);
         }
     }
 }
