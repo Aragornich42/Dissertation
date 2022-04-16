@@ -15,7 +15,7 @@ namespace Services
 
         internal DataConnector()
         {
-            _conStr = "postgresql://postgres@localhost:5432/postgres";
+            _conStr = "Host=localhost;Port=5432;Database=postgres;Username=postgres";
         }
 
         internal List<Employee> GetEmployees()

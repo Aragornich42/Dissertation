@@ -26,7 +26,7 @@ namespace DBCreator
                 .AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
                     .AddPostgres()
-                    .WithGlobalConnectionString("postgresql://postgres@localhost:5432/postgres")
+                    .WithGlobalConnectionString("Host=localhost;Port=5432;Database=postgres;Username=postgres")
                     .ScanIn(typeof(Employee).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);
