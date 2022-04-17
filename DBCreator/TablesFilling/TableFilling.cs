@@ -3,8 +3,8 @@
     public abstract class TableFilling
     {
         // Пока что хардкод схемы
-        private string _insertInto = "INSERT INTO public.";
-        private string _values = " VALUES ";
+        private string _insertInto = "INSERT INTO \"";
+        private string _values = "\" VALUES ";
         private string _table = "";
         private string _rowPattern = "(DEFAULT,'{0}', {1}),";
 

@@ -8,7 +8,7 @@ namespace DBCreator.Tables
         public override void Up()
         {
             Create.Table("Country").InSchema("public")
-                .WithColumn("Id").AsInt32().PrimaryKey().NotNullable().Unique().Identity().Indexed().WithColumnDescription("ID страны")
+                .WithColumn("Id").AsInt32().PrimaryKey().NotNullable().Unique().Identity().WithColumnDescription("ID страны")
                 .WithColumn("Name").AsFixedLengthString(64).NotNullable().WithColumnDescription("Название страны");
         }
 

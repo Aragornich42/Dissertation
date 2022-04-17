@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using FluentMigrator.Runner;
-using FluentMigrator.Runner.Initialization;
-using FluentMigrator.Postgres;
+using FluentMigrator.Runner.Logging;
 using DBCreator.Tables;
 
 namespace DBCreator
@@ -28,7 +26,6 @@ namespace DBCreator
                     .AddPostgres()
                     .WithGlobalConnectionString("Host=localhost;Port=5432;Database=postgres;Username=postgres")
                     .ScanIn(typeof(Employee).Assembly).For.Migrations())
-                .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);
         }
 

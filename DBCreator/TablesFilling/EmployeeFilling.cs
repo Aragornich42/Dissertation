@@ -41,9 +41,9 @@ namespace DBCreator.TablesFilling
             for(int i = 0; i < party; i++)
             {                
                 var sex = GenerateSex();
-                var name = new Faker<Name>("ru").Generate();
-                var person = new Faker<Person>("ru").Generate();
-                var address = new Faker<Address>("ru").Generate();
+                var name = new Name("ru");
+                var person = new Person("ru");
+                var address = new Address("ru");
 
                 sb.Append(GetRow(Inn(),
                                  Snils(),
@@ -54,7 +54,7 @@ namespace DBCreator.TablesFilling
                                  Sex(sex),
                                  Helper.GetFormattedDate(person.DateOfBirth),
                                  Nationality(),
-                                 address.FullAddress(),
+                                 GetFullAddressIvoryFilter(address),
                                  FactAddress(),
                                  InMarriage(),
                                  Helper.GetPhone(),
@@ -116,7 +116,7 @@ namespace DBCreator.TablesFilling
             if (_rand.Next(0, 1000000) == 999999)
                 return "NULL";
 
-            var sb = new StringBuilder('\'');
+            var sb = new StringBuilder("'");
             sb.Append(Helper.GetUpperLetter());
             for (int i = 0; i < _rand.Next(6, 31); i++)
                 sb.Append(Helper.GetLowerLetter());
@@ -152,7 +152,7 @@ namespace DBCreator.TablesFilling
         {
             if (_rand.Next(0, 5) == 4)
             {
-                var address = new Faker<Address>("ru").Generate().FullAddress();
+                var address = GetFullAddressIvoryFilter(new Address("ru"));
                 return $"'{address}'";
             }
             return "NULL";
@@ -168,10 +168,20 @@ namespace DBCreator.TablesFilling
         {
             if (_rand.Next(0, 5) == 4)
             {
-                var lorem = new Faker<Lorem>().Generate().Sentences(_rand.Next(3, 101));
+                var lorem = new Lorem().Sentences(_rand.Next(3, 11));
                 return $"'{lorem}'";
             }
             return "NULL";
+        }
+
+        private string GetFullAddressIvoryFilter(Address address)
+        {
+            var fullAddress = address.FullAddress();
+
+            if (fullAddress.Contains("Кот-д'Ивуар"))
+                fullAddress = fullAddress.Replace("Кот-д'Ивуар", "Кот-д-Ивуар");
+
+            return fullAddress;
         }
 
         #endregion

@@ -8,7 +8,7 @@ namespace DBCreator.Tables
         public override void Up()
         {
             Create.Table("ForeignPassport").InSchema("public")
-                .WithColumn("Id").AsInt64().PrimaryKey().NotNullable().Unique().Identity().Indexed().WithColumnDescription("ID иностранного паспорта")
+                .WithColumn("Id").AsInt64().PrimaryKey().NotNullable().Unique().Identity().WithColumnDescription("ID иностранного паспорта")
                 .WithColumn("EmployeeId").AsInt64().NotNullable().WithColumnDescription("Табельный номер")      //foreign
                 .WithColumn("CountryId").AsInt32().NotNullable().WithColumnDescription("ID страны")      //foreign
                 .WithColumn("Number").AsFixedLengthString(64).NotNullable().WithColumnDescription("Серия и номер")

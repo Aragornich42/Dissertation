@@ -32,7 +32,7 @@ namespace DBCreator.TablesFilling
             for (int i = 0; i < party; i++)
             {
                 var degree = DegreeOfKinship();
-                var fullName = new Faker<Name>("ru").Generate().FullName(GetGender(degree));
+                var fullName = new Name("ru").FullName(GetGender(degree));
 
                 sb.Append(GetRow(_startId + i,
                                  fullName,

@@ -8,8 +8,8 @@ namespace DBCreator.Tables
         public override void Up()
         {
             Create.Table("Language").InSchema("public")
-                .WithColumn("Id").AsInt32().PrimaryKey().NotNullable().Unique().Identity().Indexed().WithColumnDescription("ID языка")
-                .WithColumn("Name").AsFixedLengthString(32).NotNullable().WithColumnDescription("Название языка");
+                .WithColumn("Id").AsInt32().PrimaryKey().NotNullable().Unique().Identity().WithColumnDescription("ID языка")
+                .WithColumn("Name").AsFixedLengthString(64).NotNullable().WithColumnDescription("Название языка");
         }
 
         public override void Down()
