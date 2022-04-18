@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dto;
 
@@ -16,14 +13,14 @@ namespace Services
         {
             var employees = _db.GetEmployees();
 
-            foreach (var employee in employees)
+            Parallel.ForEach(employees, employee =>
             {
                 employee.Relative = _db.GetRelative(employee.Id);
                 employee.Educations = _db.GetEducations(employee.Id);
                 employee.Professions = _db.GetProfessions(employee.Id);
                 employee.ForeignPassports = _db.GetForeignPassports(employee.Id);
                 employee.Languages = _db.GetLanguages(employee.Id);
-            }
+            });
 
             return employees;
         }
