@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GRPC";
+
+package employee;
+
+service EmployeeSrv {
+  rpc Get (google.protobuf.Empty) returns (GetReply);
+  rpc Post (PostRequest) returns (google.protobuf.Empty);
+  rpc Patch (PatchRequest) returns (google.protobuf.Empty);
+  rpc Delete (DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message GetReply {
+  repeated Employee employees = 1;
+}
+
+message PostRequest {
+  repeated Employee employees = 1;
+}
+
+message PatchRequest {
+  repeated PatchDto patches = 1;
+}
+
+message DeleteRequest {
+  repeated int64 ids = 1;
+}
+
+message Employee {
+  int64 id = 1;
+  string inn = 2;
+  string snils = 3;
+  string position = 4;
+  string surname = 5;
+  string name = 6;
+  string patronymic = 7;
+  string sex = 8;
+  google.protobuf.Timestamp bithday = 9;
+  string nationality = 10;
+  string reg_address = 11;
+  string fact_address = 12;
+  string in_marriage = 13;
+  string phone = 14;
+  string additional = 15;
+  Relative relative = 16;
+  repeated Profession professions = 17;
+  repeated Education educations = 18;
+  repeated ForeignPassport foreign_passports = 19;
+  repeated Language languages = 20;
+}
+
+message Relative {
+  string fio = 1;
+  string degree_of_kinship = 2;
+  string phone = 3;
+}
+
+message Profession {
+  string name = 1;
+  bool is_main = 2;
+}
+
+message Education {
+  string education_level = 1;
+  string dip_seria = 2;
+  string dip_number = 3;
+  string educat_instit_name = 4;
+  string educat_instit_address = 5;
+  int32 year_of_grad = 6;
+  string qualification = 7;
+}
+
+message ForeignPassport {
+  string country_name = 1;
+  string number = 2;
+  google.protobuf.Timestamp start_date = 3;
+  google.protobuf.Timestamp finish_date = 4;
+}
+
+message Language {
+  string language_name = 1;
+  string language_competence = 2;
+}
+
+message PatchDto {
+  int64 id = 1;
+  string additional = 2;
+}

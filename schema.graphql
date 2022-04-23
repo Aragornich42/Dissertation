@@ -1,0 +1,171 @@
+"""
+The `@defer` directive may be provided for fragment spreads and inline fragments to inform the executor to delay the execution of the current fragment to indicate deprioritization of the current fragment. A query with `@defer` directive will cause the request to potentially return multiple responses, where non-deferred data is delivered in the initial response and data deferred is delivered in a subsequent response. `@include` and `@skip` take precedence over `@defer`.
+"""
+directive @defer(
+  """
+  If this argument label has a value other than null, it will be passed on to the result of this defer directive. This label is intended to give client applications a way to identify to which fragment a deferred result belongs to.
+  """
+  label: String
+
+  """
+  Deferred when true.
+  """
+  if: Boolean
+) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"""
+The `@stream` directive may be provided for a field of `List` type so that the backend can leverage technology such as asynchronous iterators to provide a partial list in the initial response, and additional list items in subsequent responses. `@include` and `@skip` take precedence over `@stream`.
+"""
+directive @stream(
+  """
+  If this argument label has a value other than null, it will be passed on to the result of this stream directive. This label is intended to give client applications a way to identify to which fragment a streamed result belongs to.
+  """
+  label: String
+
+  """
+  The initial elements that shall be send down to the consumer.
+  """
+  initialCount: Int! = 0
+
+  """
+  Streamed when true.
+  """
+  if: Boolean
+) on FIELD
+
+type Query {
+  employees: [Employee]
+}
+
+type Mutation {
+  addEmployees(input: [EmployeeInput]): Int!
+  updateEmployees(input: [PatchDtoInput]): Int!
+  deleteEmployees(input: [Long!]): Int!
+}
+
+input EmployeeInput {
+  id: Long!
+  iNN: String
+  sNILS: String
+  position: String
+  surname: String
+  name: String
+  patronymic: String
+  sex: String
+  bithday: DateTime!
+  nationality: String
+  regAddress: String
+  factAddress: String
+  inMarriage: String
+  phone: String
+  additional: String
+  relative: RelativeInput
+  professions: [ProfessionInput]
+  educations: [EducationInput]
+  foreignPassports: [ForeignPassportInput]
+  languages: [LanguageInput]
+}
+
+type Employee {
+  id: Long!
+  iNN: String
+  sNILS: String
+  position: String
+  surname: String
+  name: String
+  patronymic: String
+  sex: String
+  bithday: DateTime!
+  nationality: String
+  regAddress: String
+  factAddress: String
+  inMarriage: String
+  phone: String
+  additional: String
+  relative: Relative
+  professions: [Profession]
+  educations: [Education]
+  foreignPassports: [ForeignPassport]
+  languages: [Language]
+}
+
+input PatchDtoInput {
+  id: Long!
+  additional: String
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole 64-bit numeric values. Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+input EducationInput {
+  educationLevel: String
+  dipSeria: String
+  dipNumber: String
+  educatInstitName: String
+  educatInstitAddress: String
+  yearOfGrad: Int!
+  qualification: String
+}
+
+input ProfessionInput {
+  name: String
+  isMain: Boolean!
+}
+
+input RelativeInput {
+  fIO: String
+  degreeOfKinship: String
+  phone: String
+}
+
+"""
+The `DateTime` scalar represents an ISO-8601 compliant date time type.
+"""
+scalar DateTime
+
+input ForeignPassportInput {
+  countryName: String
+  number: String
+  startDate: DateTime!
+  finishDate: DateTime!
+}
+
+input LanguageInput {
+  languageName: String
+  languageCompetence: String
+}
+
+type Relative {
+  fIO: String
+  degreeOfKinship: String
+  phone: String
+}
+
+type Profession {
+  name: String
+  isMain: Boolean!
+}
+
+type Education {
+  educationLevel: String
+  dipSeria: String
+  dipNumber: String
+  educatInstitName: String
+  educatInstitAddress: String
+  yearOfGrad: Int!
+  qualification: String
+}
+
+type ForeignPassport {
+  countryName: String
+  number: String
+  startDate: DateTime!
+  finishDate: DateTime!
+}
+
+type Language {
+  languageName: String
+  languageCompetence: String
+}
